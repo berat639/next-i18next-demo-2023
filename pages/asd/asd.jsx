@@ -1,37 +1,18 @@
 import { useEffect } from "react";
 import { useTranslation } from "next-i18next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { fetchAPI } from "../lib/api";
-import Head from "next/head"; 
-import Layout from "../components/layout";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"; 
+import Head from "next/head";  
 
-export default function Home({ data, locale }) {
+export default function Asd({ data, locale }) {
   const { t } = useTranslation();
-
-  // Arka plan resmi URL'si
-  const backgroundImage = "https://swiperjs.com/demos/images/nature-1.jpg";
-  useEffect(() => {
-    if (typeof Swiper === "undefined") {
-      return;
-    }
-
-    new Swiper(".swiper-container", {
-      // Swiper ayarları
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      loop: true,
-      fullscreen: true,
-    });
-  }, []);
-
+ 
   return (
-    <Layout>
+     <>
       <Head>
         <title>{t("app_title")}</title> 
       </Head>
-      <div
+      <p>sdfsdfds</p>
+      {/* <div
         className="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center "
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
@@ -52,14 +33,14 @@ export default function Home({ data, locale }) {
             <div className="swiper-button-prev"></div>
           </div>
         </div>
-      </div>
-    </Layout>
+      </div> */} 
+      </>
   );
 } 
 
 export const getServerSideProps = async (context) => {
   const { locale } = context;
-  const data = await fetchAPI("Blog/GetBlogs");
+  const data = {}
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
